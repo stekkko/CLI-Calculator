@@ -1,0 +1,3 @@
+[submodule "CLI-Calculator-extra"]
+	path = CLI-Calculator-extra
+	url = https://github.com/stekkko/CLI-Calculator-extra
