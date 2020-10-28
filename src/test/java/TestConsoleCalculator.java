@@ -38,6 +38,11 @@ public class TestConsoleCalculator extends TestCase {
         expected = new ArrayList<>();
         Collections.addAll(expected, 3.0, 4.0, 2.0, '*', 1.0, 5.0, '+', 2.0, '^', '/', '-');
         Assert.assertEquals(expected, Processor.buildExpression("3-4*2/(1+5)^2"));
+
+        expected = new ArrayList<>();
+        Collections.addAll(expected, 1.0, 2.0, 4.0, '*', '+', 9.0, 9.0, '*', 0.5, '^', '-', 1000.0, 2.0, '*', '+');
+        Assert.assertEquals(expected, Processor.buildExpression("1+2*4-(9*9)^0.5+1000*2"));
+
     }
 
     @Test
@@ -52,13 +57,28 @@ public class TestConsoleCalculator extends TestCase {
         Assert.assertEquals(7, Processor.eval(rpn), 0.0001f);
 
         rpn = new ArrayList<>();
+        Collections.addAll(rpn, 3.0, 4.0, '^');
+        Assert.assertEquals(81, Processor.eval(rpn), 0.0001f);
+
+        rpn = new ArrayList<>();
+        Collections.addAll(rpn, 3.0, 4.0, '*');
+        Assert.assertEquals(12, Processor.eval(rpn), 0.0001f);
+
+        rpn = new ArrayList<>();
+        Collections.addAll(rpn, 3.0, 4.0, '/');
+        Assert.assertEquals(3 / 4f, Processor.eval(rpn), 0.0001f);
+
+        rpn = new ArrayList<>();
         Collections.addAll(rpn,  1.0, 2.0, '+', 4.0, '*', 3.0, '+');
         Assert.assertEquals(15, Processor.eval(rpn), 0.0001f);
-
 
         rpn = new ArrayList<>();
         Collections.addAll(rpn,  3.0, 4.0, 2.0, '*', 1.0, 5.0, '+', 2.0, '^', '/', '-');
         Assert.assertEquals(3 - 8f/36f, Processor.eval(rpn), 0.0001f);
+
+        rpn = new ArrayList<>();
+        Collections.addAll(rpn,  1.0, 2.0, 4.0, '*', '+', 9.0, 9.0, '*', 0.5, '^', '-', 1000.0, 2.0, '*', '+');
+        Assert.assertEquals(2000, Processor.eval(rpn), 0.0001f);
     }
 
     @Test(expected = WrongArithmeticException.class)
