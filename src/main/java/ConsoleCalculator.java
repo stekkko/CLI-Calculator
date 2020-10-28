@@ -21,6 +21,11 @@ public class ConsoleCalculator {
             if (Processor.removeAllInvalidSymbols(expr, "exit").equals("exit"))
                 break;
 
+            if (Processor.removeAllInvalidSymbols(expr, "easter").equals("easter")) {
+                System.out.println("\\(◕‿◕)/ YOU HAVE FOUND EASTER EGG. CONTINUE WORKING.");
+                continue;
+            }
+
             try {
                 expr = Processor.removeAllInvalidSymbols(expr, VALID);
                 double result = Processor.eval(Processor.buildExpression(expr));
