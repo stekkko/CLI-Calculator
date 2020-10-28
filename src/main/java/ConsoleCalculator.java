@@ -15,7 +15,8 @@ public class ConsoleCalculator {
         while (true) {
             String expr = scanner.nextLine();
 
-            if (expr.equals("exit")) break;
+            if (Processor.removeAllInvalidSymbols(expr, "exit").equals("exit"))
+                break;
 
             try {
                 expr = Processor.removeAllInvalidSymbols(expr, VALID);
