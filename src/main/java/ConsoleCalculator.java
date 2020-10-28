@@ -12,6 +12,9 @@ public class ConsoleCalculator {
         System.out.println("0123456789+-*/()^.");
         System.out.println("Type exit to close program");
 
+        /**
+         * main workflow
+         */
         while (true) {
             String expr = scanner.nextLine();
 
