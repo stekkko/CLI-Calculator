@@ -4,6 +4,12 @@ import java.util.Stack;
 
 public class Processor {
 
+    /**
+     * This function will remove inVALID symbols witch are differend from @param valid
+     * @param str iput string
+     * @param valid symbols is allowed
+     * @return changed format string from input str
+     */
     static String removeAllInvalidSymbols(String str, String valid) {
         if (str == null || valid == null) return "";
 
@@ -16,6 +22,12 @@ public class Processor {
         return result.toString();
     }
 
+    /**
+     * Builds arithmetic expression from giving string
+     * @param str must be with no Invalid Symbols
+     * @return List of values in Reverse Polsk Notation
+     * @throws WrongArithmeticException if there is Invalic symbols
+     */
     static List<Object> buildExpression(String str) throws WrongArithmeticException {
         if (str == null) return new ArrayList<>();
 
@@ -92,6 +104,12 @@ public class Processor {
         return result;
     }
 
+    /**
+     * Evaluate from reversePorlsNotation to some Double value
+     * @param reversePolskNotation check wiki for Reverse Polsk Notation
+     * @return double result value
+     * @throws WrongArithmeticException if giving param contains number and operands in wrong order
+     */
     static double eval(List<Object> reversePolskNotation) throws WrongArithmeticException{
         if (reversePolskNotation == null) return 0;
 
